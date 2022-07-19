@@ -1,0 +1,58 @@
+{
+    "name": "@marcm/shallow-equal",
+    "version": "1.0.0",
+    "description": "Shallow comparison of objects and arrays",
+    "author": "Marcus Mathiassen",
+    "license": "MIT",
+    "browser": "index.umd.js",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.js",
+    "exports": {
+        ".": "./dist/index.cjs.js"
+    },
+    "scripts": {
+        "test": "jest",
+        "benchmark:png": "capture-website ./benchmark/index.html --dark-mode --overwrite --width=1920 --height=1080 --delay=3 --output=benchmark.png",
+        "benchmark": "node ./benchmark/index.js",
+        "build:rollup": "rm -rf dist && rollup -c",
+        "build:clean": "rm -rf dist index.*.js",
+        "build": "npm run build:rollup && npm pack"
+    },
+    "devDependencies": {
+        "benchee": "^1.1.0",
+        "capture-website-cli": "^2.3.0",
+        "cli-table3": "^0.6.2",
+        "dot": "^1.1.3",
+        "fast-deep-equal": "^3.1.3",
+        "fast-equals": "^4.0.1",
+        "jest": "^28.1.3",
+        "react": "^18.2.0",
+        "react-fast-compare": "^3.2.0",
+        "rollup": "^2.77.0",
+        "rollup-plugin-terser": "^7.0.2"
+    },
+    "files": [
+        "dist/index.umd.js",
+        "dist/index.esm.js",
+        "dist/index.cjs.js"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MarcusMathiassen/shallow-equal.git"
+    },
+    "keywords": [
+        "shallow-equal",
+        "fast",
+        "equal",
+        "small"
+    ],
+    "bugs": {
+        "url": "https://github.com/MarcusMathiassen/shallow-equal/issues"
+    },
+    "homepage": "https://github.com/MarcusMathiassen/shallow-equal#readme",
+    "dependencies": {
+        "enzyme-shallow-equal": "^1.0.4",
+        "shallow-equal": "^1.2.1",
+        "shallowequal": "^1.1.0"
+    }
+}

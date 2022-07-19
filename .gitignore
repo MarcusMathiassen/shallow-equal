@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+package-lock.json
+results
+*.png
+package
+dist
+*.tgz
+benchmark/node_modules
+.npmrc
