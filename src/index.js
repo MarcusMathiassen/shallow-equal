@@ -76,9 +76,7 @@ export function shallowEqual(a, b) {
             var i = a.size
             if (i !== b.size) return false
             ;(a = [...a]), (b = [...b])
-            for (; i--; )
-                if (a[i] !== b[i] || (a[i] !== a[i] && b[i] !== b[i]))
-                    return false
+            for (; i--; ) if (a[i] !== b[i] || (a[i] !== a[i] && b[i] !== b[i])) return false
             return true
 
         case RegExp:

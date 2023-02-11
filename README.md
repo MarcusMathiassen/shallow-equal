@@ -42,9 +42,10 @@ const { shallowEqual } = require('@marcm/shallow-equal')
 import { shallowEqual } from '@marcm/shallow-equal'
 
 // Typed Arrays
-shallowEqual(new Float32Array([3, 4, NaN]), new Float32Array([3, 4, NaN])) // true
-shallowEqual(new Float32Array([3, 4, NaN]), new Float32Array([3, 4, null])) // false
+shallowEqual(new Float32Array([3, 4, 6]), new Float32Array([3, 4, 6])) // true
+shallowEqual(new Float32Array([3, 4, 6]), new Float32Array([3, 4, 8])) // false
 // Objects and array
+shallowEqual({ a: 'a', b: 'b' }, { a: 'a', b: 'b' }) // true
 shallowEqual([{ a: 'a' }, { b: 'b' }], [{ a: 'a' }, { b: 'b' }]) // false
 // Dates
 shallowEqual(new Date('2017-06-16T21:36:48.362Z'), new Date('2016-06-16T21:36:48.362Z')) // false
