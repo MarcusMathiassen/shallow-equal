@@ -4,21 +4,24 @@
     "description": "Shallow comparison of objects and arrays",
     "author": "Marcus Mathiassen",
     "license": "MIT",
-    "browser": "index.umd.js",
+    "browser": "dist/index.js",
     "main": "dist/index.cjs.js",
     "module": "dist/index.esm.js",
+    "type": "module",
     "exports": {
-        ".": "./dist/index.cjs.js"
+      ".": {
+        "import": "./dist/index.esm.js",
+        "require": "./dist/index.cjs.js"
+      }
     },
     "scripts": {
-        "test": "jest",
+        "test": "ava",
         "benchmark:png": "capture-website ./benchmark/index.html --dark-mode --overwrite --width=1920 --height=1080 --delay=3 --output=benchmark.png",
         "benchmark": "node ./benchmark/index.js",
-        "build:rollup": "rm -rf dist && rollup -c",
-        "build:clean": "rm -rf dist index.*.js",
-        "build": "npm run build:rollup && npm pack"
+        "build": "rm -rf dist && rollup -c && npm pack"
     },
     "devDependencies": {
+        "ava": "^5.2.0",
         "benchee": "^1.1.0",
         "capture-website-cli": "^2.3.0",
         "cli-table3": "^0.6.2",
@@ -32,9 +35,7 @@
         "rollup-plugin-terser": "^7.0.2"
     },
     "files": [
-        "dist/index.umd.js",
-        "dist/index.esm.js",
-        "dist/index.cjs.js"
+        "dist"
     ],
     "repository": {
         "type": "git",

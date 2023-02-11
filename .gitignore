@@ -1,9 +1,9 @@
 node_modules
+react
 .DS_Store
 package-lock.json
 results
-*.png
-package
+index.js
 dist
 *.tgz
 benchmark/node_modules

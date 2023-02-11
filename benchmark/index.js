@@ -5,13 +5,55 @@ const assertDeepStrictEqual = require('assert').deepStrictEqual;
 const { createSuite } = require('benchee');
 const Table = require('cli-table3');
 
-const tests = require('../src/testSuites');
+const tests = require('/Users/marcusmathiassen/Developer/fast-equals/__tests__/__helpers__/testSuites.js');
 
-const fe = require('../dist/index.cjs');
+
+/**
+ * Performs equality by iterating through keys on an object and returning false
+ * when any key has values which are not strictly equal between the arguments.
+ * Returns true when the values of all keys are strictly equal.
+ */
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+const is = Object.is;
+function shallowEqualReact(objA, objB) {
+  if (is(objA, objB)) {
+    return true;
+  }
+
+  if (
+    typeof objA !== 'object' ||
+    objA === null ||
+    typeof objB !== 'object' ||
+    objB === null
+  ) {
+    return false;
+  }
+
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+
+  // Test for A's keys different from B.
+  for (let i = 0; i < keysA.length; i++) {
+    const currentKey = keysA[i];
+    if (
+      !hasOwnProperty.call(objB, currentKey) ||
+      !is(objA[currentKey], objB[currentKey])
+    ) {
+      return false;
+    }
+  }
+
+  return true;
+}
 
 const equalPackages = {
   'fast-shallow-equal': require('fast-shallow-equal').equal,
-  '@marcm/shallow-equal': fe.shallowEqual,
+  '@marcm/shallow-equal': require('/Users/marcusmathiassen/Developer/@mathi/shallow-equal/dist/index.cjs').shallowEqual,
+  'react/shallowEqual': shallowEqualReact,
   'shallowequal': require('shallowequal'),
   'shallow-equal (shallowEqualObjects)': require('shallow-equal').shallowEqualObjects,
   'enzyme-shallow-equal': require('enzyme-shallow-equal').default,
