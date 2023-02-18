@@ -465,6 +465,13 @@ export const testSuites = [
         value1: new Date('foo'),
         value2: new Date('bar'),
       },
+      {
+        deepEqual: false,
+        description: '`getTime()` returns NaN for invalid dates',
+        shallowEqual: false,
+        value1: new Date('2017-06-16T21:36:48.362Z'),
+        value2: new Date('foo'),
+      },
     ],
   },
   {
